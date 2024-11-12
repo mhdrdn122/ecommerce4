@@ -1,0 +1,38 @@
+.upload-img{
+    cursor: pointer;
+    border: 3px dotted #0d6efd;
+    padding: 20px 0;
+    margin: 10px 0
+}
+
+.custom-progres{
+    width: 100%;
+    height: 1.33em;
+    background: #e6eae3;
+    overflow: hidden;
+    border-radius:5px;
+    margin: 5px 0;
+}
+.child-progres{
+    height: 1.33em;
+    width: 100%;
+    background:#0866dc;
+    position: relative;
+    border: 1px solid #0866dc;
+}
+.child-progres::after{
+    content: attr(progres) ;
+    max-width: 40px;
+    max-height: 40px;
+    background-color: #fff;
+    color: #0866dc;
+    border-radius: 5px;
+    position: absolute;
+    border: 1px solid #0866dc;
+
+    padding: 3px;
+    top: 50%;
+    left: 50%;
+    font-size: 16px;
+    transform: translate(-50%,-50%);
+}

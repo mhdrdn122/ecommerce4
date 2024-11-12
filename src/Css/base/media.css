@@ -1,0 +1,54 @@
+@media (min-width : 570px){
+    .container{
+        width: 540px;
+    }
+}
+/* 760px */
+@media (min-width : 760px){
+    .container{
+        width: 720px;
+    }
+}
+
+/* 992px */
+@media (min-width : 992px){
+    .container{
+        width: 960px;
+    }
+}
+
+@media (max-width : 992px){
+    .container form{
+        background-image:
+          linear-gradient(to top , rgba(255, 255, 255, 0.637) 0% , white 100% ) ,
+         url('../../../public/media/img/form-background.jpg') !important  ;
+        text-align: center;
+    }
+    .custom-form{
+        width: 100% !important; 
+    }
+    .custom-form input{
+        width: 100% !important;
+    }
+    .custom-form button{
+        width: 100%;
+    }
+    .error{
+        width: 100% !important;
+    }
+   
+}
+
+/* 1200px */
+@media (min-width : 1200px){
+    .container{
+        width: 1140px;
+    }
+}
+
+/* 1400px */
+@media (min-width : 1400px){
+    .container{
+        width: 1320px;
+    }
+}

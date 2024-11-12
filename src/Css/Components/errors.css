@@ -1,0 +1,13 @@
+.error{
+    display: block;
+    margin: 10px 0;
+    background: #ff000040;
+    padding: 15px;
+    border-radius: 7px;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    width: 80%;
+}
