@@ -88,7 +88,7 @@ console.log(totalPages)
       </Link>
     </div>
     
-    <TableShow header={header} total={totalPages} setLimit={setLimit} setPage={setPage} data={products}  page={page} limit={limit}   del={deleteProduct} />
+    <TableShow keySearch={PRO2} header={header} total={totalPages} setLimit={setLimit} setPage={setPage} data={products}  page={page} limit={limit}   del={deleteProduct} />
     </div>
   )
 }

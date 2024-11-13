@@ -71,7 +71,7 @@ const Categories = () => {
       </Link>
     </div>
     
-    <TableShow header={header} total={totalPages} setLimit={setLimit} setPage={setPage} page={page} limit={limit} data={categories}   del={deleteCategory} />
+    <TableShow keySearch={CAT2} header={header} total={totalPages} setLimit={setLimit} setPage={setPage} page={page} limit={limit} data={categories}   del={deleteCategory} />
   
 
     </div>

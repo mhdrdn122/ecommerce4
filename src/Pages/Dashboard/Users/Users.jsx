@@ -97,7 +97,7 @@ const Users = () => {
       </Link>
     </div>
     
-    <TableShow header={header} data={users} total={totalPages} setLimit={setLimit} setPage={setPage} page={page} limit={limit}  currentUser={currentUser} del={deleteUser} />
+    <TableShow keySearch={USER} header={header} data={users} total={totalPages} setLimit={setLimit} setPage={setPage} page={page} limit={limit}  currentUser={currentUser} del={deleteUser} />
    
 
     </div>

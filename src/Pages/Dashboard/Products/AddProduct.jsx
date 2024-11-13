@@ -46,7 +46,7 @@ const AddProduct = () => {
         const categories =  await Axios.get(`/${CAT}`, {headers : {
           Authorization :  "Bearer " + token
       }})
-        setCategories(categories.data)
+        setCategories(categories.data.data)
     }
     useEffect(  ()=>{
       getCategories()
@@ -127,8 +127,6 @@ const AddProduct = () => {
       }
     }
   }
-  console.log(idImage)
-
 
   const handelDeleteImage = async (key , img) => {
     const findId = idImage.current[key]
@@ -148,12 +146,11 @@ const AddProduct = () => {
     
   }
 
-
+console.log(categories)
   const mapOption = categories.map( (cat , key ) => {
     return <option key={key} value={cat.id}>{cat.title}</option>
   })
 
-  console.log(idImage.current)
   // maping 
   const imagesUploadShow = images.map((img,key) => {
     return (
@@ -179,7 +176,6 @@ const AddProduct = () => {
       </div>
     )
   })
-console.log(images)
 
   return (
     <Form className='w-100 p-3 bg-white' onSubmit={addProduct}>
