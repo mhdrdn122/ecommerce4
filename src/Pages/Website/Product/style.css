@@ -1,0 +1,226 @@
+:root {
+  --accent-color: #FFC43F;
+  --dark-color: #222222;
+  --light-dark-color: #727272;
+  --light-color: #fff;
+  --grey-color: #dbdbdb;
+  --light-grey-color: #fafafa;
+  --primary-color: #6995B1;
+  --light-primary-color: #eef1f3;
+}
+
+.card-wrapper {
+  max-width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--light-primary-color), var(--light-grey-color));
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-wrapper:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--light-color);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.product-imgs .img-display {
+  overflow: hidden;
+  position: relative;
+  border-right: 1px solid var(--grey-color);
+}
+
+.product-imgs .img-showcase {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-imgs .img-showcase img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+.product-imgs .img-showcase img:hover {
+  transform: scale(1.1);
+}
+
+.img-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  padding: 0.7rem;
+  background-color: var(--light-grey-color);
+}
+
+.img-select .img-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid var(--grey-color);
+  border-radius: 10px;
+  transition: border-color 0.3s, transform 0.3s ease;
+}
+
+.img-select .img-item img:hover {
+  border-color: var(--accent-color);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-content {
+  padding: 2rem;
+  color: var(--dark-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-content .product-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  color: var(--dark-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-content .product-link {
+  font-size: 1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary-color);
+  transition: color 0.3s, border-color 0.3s ease;
+}
+
+.product-content .product-link:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.product-rating i {
+  color: var(--accent-color);
+}
+
+.product-rating span {
+  font-size: 1.1rem;
+  color: var(--light-dark-color);
+  margin-left: 0.7rem;
+}
+
+.product-price {
+  margin-top: 1.5rem;
+}
+
+.product-price .last-price span {
+  text-decoration: line-through;
+  color: var(--light-dark-color);
+  margin-right: 0.5rem;
+}
+
+.product-price .new-price span {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.purchase-info {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.purchase-info input {
+  text-align: center;
+  width: 70px;
+  padding: 0.5rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.purchase-info input:focus {
+  border-color: var(--primary-color);
+}
+
+.purchase-info button {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 10px;
+  color: var(--light-color);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.purchase-info .btn-primary {
+  background-color: var(--primary-color);
+}
+
+.purchase-info .btn-primary:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.purchase-info .btn-secondary {
+  background-color: var(--light-dark-color);
+}
+
+.purchase-info .btn-secondary:hover {
+  background-color: var(--dark-color);
+  transform: translateY(-2px);
+}
+
+.social-links {
+  margin-top: 2.5rem;
+}
+
+.social-links p {
+  font-size: 1rem;
+  color: var(--light-dark-color);
+  margin-bottom: 0.8rem;
+}
+
+.social-links a {
+  font-size: 1.5rem;
+  color: var(--dark-color);
+  margin-right: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .product-content {
+    text-align: center;
+  }
+
+  .purchase-info {
+    flex-direction: column;
+  }
+}

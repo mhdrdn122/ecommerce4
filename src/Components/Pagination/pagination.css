@@ -9,7 +9,7 @@
     cursor: pointer;
   }
   
-  .active {
+  .active-link {
     background-color: #1e50ff;
     border-radius: 50%;
     color: #fff;

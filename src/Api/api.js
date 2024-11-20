@@ -8,6 +8,11 @@ export const CAT2 = "category"
 
 export const PRO = "products"
 export const PRO2 = "product"
+export const SALE = "latest-sale"
+export const LATEST = "latest"
+export const TOP_RATE = "top-rated"
+
+
 
 
 export const USERS = "users"

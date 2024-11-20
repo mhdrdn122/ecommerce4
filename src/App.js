@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import HomePage from './Pages/Website/HomePage';
+import 'react-loading-skeleton/dist/skeleton.css'
 import Login from './Pages/Auth/Login';
 import Regestir from './Pages/Auth/Regestir';
 import Users from './Pages/Dashboard/Users/Users';
@@ -17,6 +17,10 @@ import EditCategory from './Pages/Dashboard/Categories/EditCategory';
 import Products from './Pages/Dashboard/Products/Products';
 import AddProduct from './Pages/Dashboard/Products/AddProduct';
 import EditProduct from './Pages/Dashboard/Products/EditProduct';
+import MainPage from './Pages/Website/MainPage/MainPage';
+import WebCategories from './Pages/Website/MainPage/WebCategories';
+import AllCategories from './Pages/Website/Categories/AllCategories';
+import ProductInfo from './Pages/Website/Product/ProductInfo';
 
 
 function App() {
@@ -25,7 +29,14 @@ function App() {
       <Routes>
         {/* ******* Public Routs ******* */}
         {/* Main Pages */}
-        <Route path='/' element={<HomePage />} />
+        <Route element={<WebCategories />} > 
+        <Route path='/' element={<MainPage />} />
+        <Route path='/all-categories' element={<AllCategories />} />
+        <Route path='product/:id' element={<ProductInfo />} />
+
+        
+        </Route>
+
 
         {/* Auth Pages */}
         <Route element={<ReqouerBack />}>

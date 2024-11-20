@@ -12,7 +12,7 @@ export function PaginatedItems({  setPage , limit , total }) {
 <ReactPaginate
   containerClassName={"pagination d-flex align-items-center pt-3  w-50 justify-content-between text-center"}
   pageClassName={"page-item "}
-  activeClassName={"active white"}
+  activeClassName={"active-link white"}
   onPageChange={ (e) => setPage(e.selected + 1) }
   pageCount={pageCount}
   breakLabel="..."
