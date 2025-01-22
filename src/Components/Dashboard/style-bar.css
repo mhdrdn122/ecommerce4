@@ -16,13 +16,13 @@
 
 .side-bar{
     background-color: white;
-    width: 200px;
-    position: static;
+    width: 240px;
     top: 70px;
-    height: 100vh;
+    height: calc(100vh - 70px);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
     padding: 0 10px;
+    position: sticky;
 }
 
 .side-bar-link{
@@ -34,6 +34,7 @@
     z-index: 222;
     position: sticky;
     top: 80px;
+    padding: 10px 10px;
 }
 
 .side-bar-link p{
@@ -42,7 +43,7 @@
 .side-bar-link.active{
     background-color: #f2f3fe;
     color: #0f8edc;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     border-radius: 5px;
 }
 .side-bar-link.active:hover{

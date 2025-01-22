@@ -1,14 +1,18 @@
 .form{
     background-image:  linear-gradient(110deg , white 0% , white 50% , transparent 50%) ,
-     url('../../../public/media/img/form-background.jpg') ;
-    background-size: cover;
+     url('../../../public/media/img/form-background6.jpg') ;
+    background-size: 900px;
     height: 30rem;
     box-shadow: 0 10px 10px #0009;
     border-radius: 10px;
     background-position: center;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    transform: translateZ(-100px);
     width: 100%;
     padding: 10px;
-    margin: 40px 0 !important
+    margin: 40px 0 !important;
+    position: relative;
 }
 .custom-form{
     width: 50%;
@@ -60,5 +64,10 @@
 } */
 .form-custom label{
     display: none;
+}
+
+.footer-form{
+    position: absolute;
+    bottom: 0;
 }
 

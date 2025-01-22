@@ -11,11 +11,12 @@ const LatestProducts = () => {
 
 
     const getProducts = async () => {
-        const products = await Axios.get(`${LATEST}`).finally(setLoading(false))
+        const products = await Axios.get(`${LATEST}`)
         setProductData(products.data)
-        console.log(products)
+        setLoading(false)
     }
     useEffect( () => {
+      setLoading(true)
         getProducts()
     } , [])
 

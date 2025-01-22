@@ -7,7 +7,7 @@ const WebCategories = () => {
   return (
     <div>
         <Navbar />
-        <SubNav />
+        {/* <SubNav /> */}
         <Outlet />
     </div>
   )

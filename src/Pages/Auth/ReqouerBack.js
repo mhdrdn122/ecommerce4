@@ -4,7 +4,7 @@ import Login from './Login'
 const ReqouerBack = () => {
     const cookis = Cookis()
     const token = cookis.get('ecommerce')
-    console.log(token)
+    // console.log(token)
 
     return token ? <Outlet /> : <Outlet /> //window.history.back() 
 }

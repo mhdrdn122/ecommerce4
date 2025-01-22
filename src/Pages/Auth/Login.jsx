@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { BASEURL, LOGIN, REGISTER } from '../../Api/api'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Loading from '../../Components/Loading/Loading'
 import Cookis from 'cookie-universal'
 import ButtonAuthWithGoogle from '../../Components/Auth/ButtonAuthWithGoogle'
@@ -35,7 +35,7 @@ const Login = () => {
            const role = res.data.user.role
            const go = role ==='1995' ? 'users' : ""
 
-           role === '2001' ? navigate(`/`) : navigate(`/dashboard/${go}`)
+           role === '2001' ? navigate(`/`) : navigate(`/dashboard/users`)  
            
 
 
@@ -80,12 +80,23 @@ const Login = () => {
                         </Form.Group>
                         
                        
-                        <button className='btn btn-primary' type='submit'>Login Now</button>
-                        
-                        <a href={`https://127.0.0.1:8000/login-google`}> <ButtonAuthWithGoogle /> </a>
+                        <div className='d-flex align-items-center gap-3'>
+                            <button className='btn btn-primary ' style={{
+                                padding : " 12px 16px 12px 16px "
+                            }} type='submit'>Login Now</button>
+                            
+                            <a href={`https://127.0.0.1:8000/login-google`}> <ButtonAuthWithGoogle /> </a>
+                            
+                        </div>
                         { error && (
                         <span className='error'>{error}</span>
                         )}
+
+                        <p className='footer-form'>
+                            create Account ?<Link className='m-2' to={`/register`}>
+                            Sign up                    
+                            </Link>
+                        </p>
                    </div>
                 </Form>
             </div>

@@ -6,7 +6,7 @@ export const WindoeWidth = createContext(null)
 
 const WindoeContext = ({children}) => {
     const [widthSize , setWisthSize ] = useState(window.innerWidth)
-
+    
     useEffect(() => {
         const setReSizeWidth = () => {
             setWisthSize(window.innerWidth)

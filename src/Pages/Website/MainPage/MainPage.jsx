@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../../../Assest/images/logo.png'
-import './normalize.css'
+// import './normalize.css'
 import './style.css'
 import '../../../Components/Website/MainPageComponents/style.css'
 import Hero from '../../../Components/Website/MainPageComponents/Hero'

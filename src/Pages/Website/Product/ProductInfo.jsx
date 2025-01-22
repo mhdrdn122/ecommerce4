@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './style.css';
 import { useParams } from 'react-router-dom';
-import { PRO, PRO2 } from '../../../Api/api';
+import { CART, PRO2 } from '../../../Api/api';
 import { Axios } from '../../../Api/Axios';
-import Cookis from "cookie-universal"
+import Cookis from "cookie-universal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as starIsEmpty } from '@fortawesome/free-regular-svg-icons';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faStar } from '@fortawesome/free-solid-svg-icons';
 import { updateCart } from '../../../Context/CartContext';
+import CounterInput from '../../../Components/Website/MainPageComponents/CounterInput';
+import SkeltonShow from '../../../Components/Skelton/SkeltonShow';
 
 const ProductInfo = () => {
   const [imgId, setImgId] = useState(1);
@@ -15,9 +17,10 @@ const ProductInfo = () => {
   const [productData, setProductData] = useState([]);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const cartUpdate = useContext(updateCart)
-  
-  const roundStars = Math.round(productData.rating);
+  const [count, setCount] = useState(1);
+  const cartUpdate = useContext(updateCart);
+
+  const roundStars = Math.round(productData.rating || 0);
   const starMin = Math.min(roundStars, 5);
   let starGold = Array.from({ length: starMin }).map((_, key) => (
     <FontAwesomeIcon key={key} fontSize={16} color="gold" icon={faStar} />
@@ -29,7 +32,7 @@ const ProductInfo = () => {
   const cookis = Cookis();
   const token = cookis.get('ecommerce');
 
-  const getProducts = async () => {
+  const getProduct = async () => {
     const product = await Axios.get(`${PRO2}/${productId.id}`, {
       headers: {
         Authorization: "Bearer " + token,
@@ -40,37 +43,93 @@ const ProductInfo = () => {
   };
 
   useEffect(() => {
-    getProducts();
+    getProduct();
   }, []);
 
   const handleImageClick = (key) => {
-    setImgId(key + 1); // ضبط imgId بناءً على الفهرس
+    setImgId(key + 1);
   };
 
-  useEffect(() => {
-    const slideImage = () => {
-      if (images.length > 0) {
-        const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
-        document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-      }
-    };
+  // useEffect(() => {
+  //   const slideImage = () => {
+  //     if (images.length > 0) {
+  //       const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+  //       document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+  //     }
+  //   };
 
-    window.addEventListener('resize', slideImage);
-    slideImage();
+  //   window.addEventListener('resize', slideImage);
+  //   slideImage();
 
-    return () => window.removeEventListener('resize', slideImage);
-  }, [imgId, images]);
+  //   return () => window.removeEventListener('resize', slideImage);
+  // }, [imgId, images]);
+
+  const checkStock = async () => {
+    try {
+      const res = await Axios.post(`${CART}/check`, {
+        product_id: productId,
+        count: count,
+      });
+      return true;
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
+  };
 
   const addToCart = () => {
-    const getProduct = JSON.parse(localStorage.getItem("product")) || []
-    getProduct.push(productData)
-    localStorage.setItem("product" , JSON.stringify(getProduct))
-    cartUpdate.setUpdate( prev => !prev)
-    
+    const stockCheck = checkStock();
+    const getProduct = JSON.parse(localStorage.getItem("product")) || [];
+    const productExist = getProduct.findIndex((prod) => prod.id == productData.id);
+
+    if (stockCheck) {
+      if (productExist !== -1) {
+        if (getProduct[productExist].count) {
+          getProduct[productExist].count += count;
+        } else {
+          getProduct[productExist].count = count;
+        }
+      } else {
+        productData.count = count;
+        getProduct.push(productData);
+      }
+      localStorage.setItem("product", JSON.stringify(getProduct));
+      cartUpdate.setUpdate((prev) => !prev);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className=" container my-2">
+        <div style={{ flexDirection : "row"}} className="card d-flex flex-wrap p-1 align-items-start ">
+          <div  className="product-imgs my-1 ">
+            <SkeltonShow length={1} width={400} height={400} color="#e0e0e0" classes="justify-md-center" /> 
+            <SkeltonShow length={3} width={50} height={50} color="#e0e0e0" classes="d-flex justify-content-center gap-3" />
+
+          </div>
+          <div className="product-content ">
+            
+            <SkeltonShow length={1} width={500} height={50} color="#e0e0e0" classes="title-skeleton" />
+            <SkeltonShow length={1} width={250} height={20} color="#e0e0e0" classes="about-skeleton" />
+            <SkeltonShow length={1} width={350} height={30} color="#e0e0e0" classes="price-skeleton" />
+            <SkeltonShow length={1} width={250} height={40} color="#e0e0e0" classes="button-skeleton" />
+
+            <SkeltonShow length={1} width={250} height={20} color="#e0e0e0" classes="about-skeleton" />
+
+            <SkeltonShow length={1} width={150} height={20} color="#e0e0e0" classes="button-skeleton" />
+            <SkeltonShow length={1} width={250} height={30} color="#e0e0e0" classes="about-skeleton" />
+
+            <SkeltonShow length={1} width={350} height={30} color="#e0e0e0" classes="about-skeleton" />
+
+          </div>
+        </div>
+      </div>
+    );
   }
+
   return (
-    <div className="card-wrapper container my-5">
-      <div style={{ flexDirection: "row" }} className="card d-flex row">
+    <div className="card-wrapper container my-2">
+      <div style={{ flexDirection: "row" }} className="card d-flex align-items-start row">
         {/* Left Side */}
         <div className="product-imgs col-md-6">
           <div className="img-display">
@@ -93,9 +152,14 @@ const ProductInfo = () => {
         {/* Right Side */}
         <div className="product-content col-md-6">
           <h2 className="product-title">{productData.title}</h2>
-          <a href="#" className="product-link text-decoration-none">{productData.About}</a>
+           
+          <div className='py-2'>
+            <p style={{textTransform : "capitalize" , }} className="fs-4 m-0">about this item:</p>
+            <span style={{color:"gray"}} className="mx-2">{productData.About}</span>
+          </div>
+
           <div className="product-rating d-flex align-items-center mt-2">
-          rating :
+            rating :
             {starGold}
             {starEmpty}
             <span className="ms-2"> {productData.rating}</span>
@@ -105,25 +169,14 @@ const ProductInfo = () => {
             <p className="last-price">Old Price: <span>${productData.price}</span></p>
             <p className="new-price">New Price: <span>${productData.discount}</span></p>
             <p className="new-price">Description: <span>{productData.description}</span></p>
-
           </div>
 
-          <div className="purchase-info mt-3">
-            <input type="number" min="0" defaultValue="1" className="form-control d-inline-block me-2" style={{ width: '60px' }} />
-            <button onClick={addToCart} type="button" className="btn btn-primary me-2">
-              Add to Cart <i className="fas fa-shopping-cart"></i>
+          <div className="purchase-info d-flex align-items-center mt-3">
+            <CounterInput setCount={setCount} />
+            <button onClick={addToCart} type="button" className="btn btn-dark me-2">
+              Add to Cart <FontAwesomeIcon icon={faShoppingCart} />
             </button>
-            {/* <button type="button" className="btn btn-secondary">Compare</button> */}
           </div>
-
-          {/* <div className="social-links mt-4">
-            <p>Share At:</p>
-            <a href="#" className="me-2"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" className="me-2"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="me-2"><i className="fab fa-instagram"></i></a>
-            <a href="#" className="me-2"><i className="fab fa-whatsapp"></i></a>
-            <a href="#"><i className="fab fa-pinterest"></i></a>
-          </div> */}
         </div>
       </div>
     </div>
@@ -131,6 +184,3 @@ const ProductInfo = () => {
 };
 
 export default ProductInfo;
-
-
-// export default ProductInfo;

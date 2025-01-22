@@ -44,7 +44,7 @@ const AddCategories = () => {
 
 
   return (
-    <Form className='w-100 p-3 bg-white' onSubmit={addCategories}>
+    <Form className='w-100 h-100 p-3 bg-white' onSubmit={addCategories}>
       <h1>Add Categories</h1>
 
     

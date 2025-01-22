@@ -19,6 +19,7 @@ const Users = () => {
   const [ page , setPage ] = useState(1)
   const [ limit , setLimit ] = useState(3)
   const [ totalPages , setTotalPages ] = useState(3)
+
  
     const cookis = Cookis()
     const token = cookis.get('ecommerce')
@@ -59,11 +60,13 @@ const Users = () => {
    
 
     const deleteUser = async (id) => {
+      
       if(id != currentUser.id ){
         try{
           const res = await Axios.delete(`${USER}/${id}`, {headers : {
             Authorization :  "Bearer " + token
         }})
+        // console.log(res)
           setUsers( prov => prov.filter(item => item.id != id))
           setReRenderComponent( prev => !prev)
         }catch(err){
@@ -97,7 +100,7 @@ const Users = () => {
       </Link>
     </div>
     
-    <TableShow keySearch={USER} header={header} data={users} total={totalPages} setLimit={setLimit} setPage={setPage} page={page} limit={limit}  currentUser={currentUser} del={deleteUser} />
+    <TableShow keySearch={USER}  header={header} data={users} total={totalPages} setLimit={setLimit} setPage={setPage} page={page} limit={limit}  currentUser={currentUser} del={deleteUser} />
    
 
     </div>

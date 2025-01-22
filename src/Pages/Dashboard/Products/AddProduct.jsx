@@ -13,7 +13,8 @@ const AddProduct = () => {
         description : "",
         price : "",
         discount : "",
-        About : ""
+        About : "",
+        stock : 0
     })
     const dummyData = {
       category : null,
@@ -21,7 +22,8 @@ const AddProduct = () => {
         description : "dummy",
         price : 222,
         discount : 0,
-        About : "dummy"
+        About : "dummy",
+        stock : 0
     }
     const [ categories , setCategories ] = useState([])
     const [ id , setId ] = useState(0)
@@ -43,10 +45,8 @@ const AddProduct = () => {
 
     // get All Categories to display in select teg
     const getCategories = async () => {
-        const categories =  await Axios.get(`/${CAT}`, {headers : {
-          Authorization :  "Bearer " + token
-      }})
-        setCategories(categories.data.data)
+        const categories =  await Axios.get(`/${CAT}`)
+        setCategories(categories.data)
     }
     useEffect(  ()=>{
       getCategories()
@@ -146,7 +146,7 @@ const AddProduct = () => {
     
   }
 
-console.log(categories)
+// console.log(categories)
   const mapOption = categories.map( (cat , key ) => {
     return <option key={key} value={cat.id}>{cat.title}</option>
   })
@@ -178,7 +178,7 @@ console.log(categories)
   })
 
   return (
-    <Form className='w-100 p-3 bg-white' onSubmit={addProduct}>
+    <Form className='w-100 h-100 p-3 bg-white' onSubmit={addProduct}>
       <h1>Add Categories</h1>
        <div >
 
@@ -214,6 +214,11 @@ console.log(categories)
             <Form.Group className="mb-3 " >
                 <Form.Label>About</Form.Label>
                 <Form.Control name='About' disabled={disable} placeholder='Enter About product' onChange={ handelChange} value={form.About} id='name'type='text'  required  />
+            </Form.Group>
+
+            <Form.Group className="mb-3 " >
+                <Form.Label>Stock</Form.Label>
+                <Form.Control name='stock' disabled={disable} placeholder='Enter stock product' onChange={ handelChange} value={form.stock} id='stock'type='number'  required  />
             </Form.Group>
 
             <Form.Group className="mb-3 " >

@@ -13,6 +13,7 @@ export const LATEST = "latest"
 export const TOP_RATE = "top-rated"
 
 
+export const CART = "cart"
 
 
 export const USERS = "users"

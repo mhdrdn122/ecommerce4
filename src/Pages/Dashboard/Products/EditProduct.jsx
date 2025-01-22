@@ -13,7 +13,8 @@ const EditProduct = () => {
         description : "",
         price : "",
         discount : "",
-        About : ""
+        About : "",
+        stock : 0,
     })
     
     const [ categories , setCategories ] = useState([])
@@ -51,7 +52,7 @@ const EditProduct = () => {
         const product =  await Axios.get(`/${PRO2}/${id}`, {headers : {
           Authorization :  "Bearer " + token
       }})
-console.log(product)
+// console.log(product)
 
         setForm(product.data[0])
         setImagesFromServer(product.data[0].images)
@@ -125,7 +126,7 @@ console.log(product)
       }
     }
   }
-  console.log(idImage)
+  // console.log(idImage)
 
 
   // delete img before uplode to backend
@@ -160,7 +161,7 @@ console.log(product)
     return <option key={key} value={cat.id}>{cat.title}</option>
   })
 
-  console.log(idImage.current)
+  // console.log(idImage.current)
   // maping 
   const imagesUploadShow = images.map((img,key) => {
     return (
@@ -197,7 +198,7 @@ console.log(product)
       </div>
     )
   })
-console.log(images)
+// console.log(images)
 
   return (
     <Form className='w-100 p-3 bg-white' onSubmit={addProduct}>
@@ -236,6 +237,11 @@ console.log(images)
             <Form.Group className="mb-3 " >
                 <Form.Label>About</Form.Label>
                 <Form.Control name='About'  placeholder='Enter About product' onChange={ handelChange} value={form.About} id='name'type='text'  required  />
+            </Form.Group>
+
+            <Form.Group className="mb-3 " >
+                <Form.Label>Stock</Form.Label>
+                <Form.Control name='stock'  placeholder='Enter Stock product' onChange={ handelChange} value={form.stock} id='stock'type='nimber'  required  />
             </Form.Group>
 
             <Form.Group className="mb-3 " >

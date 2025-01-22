@@ -23,7 +23,7 @@ const Product = ({ product }) => {
               <use xlinkHref="#heart"></use>
             </svg>
           </a> */}
-          <figure>
+          <figure style={{overflow:"hidden"}}>
             <a href="#" title={product.title}>
               <img style={{maxWidth:"220px"}} src={ product.images.length > 0 ? product.images[0].image : require("../images/thumb-bananas.png") } className="tab-image" alt={product.title} />
             </a>

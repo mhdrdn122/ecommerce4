@@ -61,7 +61,7 @@ const UserEdit = () => {
     <>
     {
       disable ? (<Loading /> ) : (
-        <Form className='w-100 p-3 bg-white' onSubmit={editUser}>
+        <Form className='w-100 h-100 p-3 bg-white' onSubmit={editUser}>
       <h1>Edit User</h1>
 
     

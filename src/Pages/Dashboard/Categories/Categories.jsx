@@ -10,6 +10,8 @@ const Categories = () => {
   const [ reRenderComponent , setReRenderComponent ] = useState(true)
   // const [ noUser , setNoUser ] = useState(false)
   const [ totalPages , setTotalPages ] = useState()
+  const [reRender, setReRender] = useState(true);
+  
 
     const cookis = Cookis()
     const token = cookis.get('ecommerce')
@@ -24,7 +26,7 @@ const Categories = () => {
         const categories =  await Axios.get(`/${CAT}?limit=${limit}&page=${page}`, {headers : {
           Authorization :  "Bearer " + token
       }})
-      console.log(categories)
+      // console.log(categories)
         setCategories(categories.data.data)
         setTotalPages(categories.data.total)
     }
@@ -43,7 +45,10 @@ const Categories = () => {
           Authorization :  "Bearer " + token
       }})
         // setCategories( prov => prov.filter(item => item.id != id))
-        setReRenderComponent( prev => !prev)
+        // setReRenderComponent( prev => !prev)
+    setReRender(prov => !prov)
+
+        
       }catch(err){
         console.log(err)
 

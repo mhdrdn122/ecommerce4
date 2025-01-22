@@ -40,10 +40,5 @@ export  const links = [
         role:['1995','1999']
 
     },
-    {
-        path:"writer",
-        title : "Writer",
-        icon : faUsers,
-        role:['1995' , '1992']
-    },
+    
 ]

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { BASEURL, REGISTER } from '../../Api/api'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Loading from '../../Components/Loading/Loading'
 import Cookis from 'cookie-universal'
 import ButtonAuthWithGoogle from '../../Components/Auth/ButtonAuthWithGoogle'
@@ -27,7 +27,7 @@ const Regestir = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault()
         setLoading(true)
-        console.log(form)
+        // console.log(form)
         try{
            const res = await axios.post(`${BASEURL}/${REGISTER}`,form)
            const token = res.data.token
@@ -80,12 +80,26 @@ const Regestir = () => {
                         </Form.Group>
                         
                        
-                        <button className='btn btn-primary' type='submit'>Register Now</button>
                         
-                        <a href="http://127.0.0.1:8000/login-google"> <ButtonAuthWithGoogle /> </a>
+                        <div className='d-flex align-items-center gap-3'>
+                            <button className='btn btn-primary ' style={{
+                                padding : " 12px 16px 12px 16px "
+                            }} type='submit'>Register Now</button>
+                            
+                            <a href={`https://127.0.0.1:8000/login-google`}> <ButtonAuthWithGoogle /> </a>
+                            
+                        </div>
+                        
                         { error && (
                         <span className='error'>{error}</span>
                         )}
+
+                        <p className='footer-form'>
+                        are you have Account ?<Link className='m-2' to={`/login`}>
+                        Sign in                    
+                        </Link>
+                        </p>
+                        
                    </div>
                 </Form>
             </div>

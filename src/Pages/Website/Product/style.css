@@ -11,7 +11,7 @@
 
 .card-wrapper {
   max-width: 100%;
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
   background: linear-gradient(135deg, var(--light-primary-color), var(--light-grey-color));
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -19,7 +19,7 @@
 }
 
 .card-wrapper:hover {
-  transform: scale(1.02);
+  /* transform: scale(1.009); */
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 
@@ -136,7 +136,7 @@
 
 .product-price .new-price span {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   color: var(--accent-color);
 }
 
@@ -217,7 +217,7 @@
   }
 
   .product-content {
-    text-align: center;
+    /* text-align: center; */
   }
 
   .purchase-info {

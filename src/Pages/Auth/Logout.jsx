@@ -1,29 +1,48 @@
-import axios from 'axios'
-import React from 'react'
-import { BASEURL, LOGOUT } from '../../Api/api'
-import Cookis from 'cookie-universal'
+import axios from "axios";
+import React, { useState } from "react";
+import { BASEURL, LOGOUT } from "../../Api/api";
+import Cookis from "cookie-universal";
+import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
-    const cookis = Cookis()
+  const cookis = Cookis();
+  const token = cookis.get("ecommerce");
+  const [ loading , setLoading ] = useState(true)
 
 
-    const handleLogoutSubmit = async () => {
-        try{
-            const res = await axios.get(`${BASEURL}/${LOGOUT}`, {headers:{
-                Authorization: 'Bearer ' + cookis.get("ecommerce")
-            }})
-            console.log(res)
-        }
-        catch(err){
-            console.log(err)
+  const navigate = useNavigate();
 
-        }
-        console.log("test")
+  const handleLogoutSubmit = async () => {
+    try {
+      setLoading(false)
+      const res = await axios.get(`${BASEURL}/${LOGOUT}`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setLoading(true)
+
+      cookis.remove("ecommerce");
+      navigate("/login");
+    //   console.log(res);
+    } catch (err) {
+      setLoading(false)
+      console.log(err);
     }
+  };
 
   return (
-    <button onClick={handleLogoutSubmit}>Logout</button>
-  )
-}
+    <button
+      style={{ backgroundColor: "#000", color: "#fff" }}
+      className="border-0  d-flex flex-column gap-3 lh-1 p-3 btn"
+      type="button"
+      onClick={handleLogoutSubmit}
+    >
+      {
+        !loading ? "loading..." : "logout"
+      }
+    </button>
+  );
+};
 
-export default Logout
+export default Logout;

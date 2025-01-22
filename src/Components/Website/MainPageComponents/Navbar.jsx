@@ -1,16 +1,52 @@
 import React from 'react'
 import logo from '../../../Assest/images/logo.png'
 import Cart from './Cart'
-
+import { useEffect , useState } from 'react'
+import { Axios } from '../../../Api/Axios'
+import { CAT } from '../../../Api/api'
+import Cookis from 'cookie-universal'
+import Logout from '../../../Pages/Auth/Logout'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+  const [categories , setCategories] = useState([])
+  const [ loading , setLoading ] = useState(true)
+
+  
+  const cookis = Cookis()
+  const token = cookis.get('ecommerce')
+
+  const getCategories = async () => {
+    try{
+      await Axios.get(`${CAT}`).then(data => setCategories(data.data.slice(-5)))
+      setLoading(false)
+    }catch(err){
+      console.log(err)
+      setLoading(false)
+    }
+  }
+
+  useEffect( () => {
+    setLoading(true)
+      getCategories()
+  } , [])
+
+  const categoriesShow = categories.map((cat , index) => {
+    return (
+      
+
+
+      <option className='black' key={index}>
+      {cat.title.length > 15 ? cat.title.slice(0,10) + "..." : cat.title}
+      </option>
+    )})
   return (
     <div class="container-fluid">
         <div class="row py-3 border-bottom">
           
           <div class="col-sm-4 col-lg-3 text-center text-sm-start">
             <div class="main-logo">
-              <a href="index.html">
+              <a href="/">
                 <img src={logo} alt="logo" class="img-fluid" />
               </a>
             </div>
@@ -19,11 +55,14 @@ const Navbar = () => {
           <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-5  d-lg-block">
             <div class="search-bar row bg-light p-2 my-2 rounded-4">
               <div class="col-md-4  d-md-block">
-                <select class="form-select border-0 bg-transparent">
-                  <option>All Categories</option>
-                  <option>Groceries</option>
-                  <option>Drinks</option>
-                  <option>Chocolates</option>
+                <select disabled={loading} class="form-select border-0 bg-transparent">
+                  {
+                    loading ? <option>loading...</option> : <option value={-1} disabled={loading}>All Categories</option>
+                  }
+                  {
+                  categoriesShow
+                  }
+                  
                 </select>
               </div>
               <div class="col-11 col-md-7">
@@ -74,12 +113,36 @@ const Navbar = () => {
               </button>
             </div> */}
 
-            <div class="cart text-end  d-lg-block dropdown">
-              <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-              <Cart />
+              {
+                token ? (
+                  <div class="cart text-end d-flex align-items-center  gap-2 dropdown">
+                    <button style={{backgroundColor : "#FFC43F" , color:"#fff"}} class="border-0 btn d-flex  gap-2 lh-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                    <Cart />
+                    </button>
+
+                    <Logout />
+
+                  </div>
+                  
+                ) : (
+                  <div class=" text-end d-flex align-items-center p-3  gap-2 ">
+                    <Link to='/login'>
+                      <button style={{backgroundColor : "#FFC43F" , color:"#000"}} class="border-0 btn d-flex  p-3 gap-2 lh-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                      login
+                      </button>
+                    </Link>
+
+                    <Link className='bolder'  to='/register'>
+
+                    <button style={{backgroundColor : "#FFC43F" , color:"#000"}} class="border-0 btn d-flex  p-3 gap-2 lh-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                    sign in
+                    </button>
+                    </Link>
+
+                  </div>
+                )
+              }
             
-              </button>
-            </div>
           </div>
 
         </div>

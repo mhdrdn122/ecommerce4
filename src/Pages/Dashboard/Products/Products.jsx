@@ -31,7 +31,7 @@ const Products = () => {
     } , [limit , page])
 
 
-console.log(totalPages)
+// console.log(totalPages)
    
 
     const deleteProduct = async (id) => {
@@ -45,7 +45,7 @@ console.log(totalPages)
 
       }
     }
-   console.log(products)
+  //  console.log(products)
     const header = [
       
       {
