@@ -6,7 +6,7 @@ import { Menu } from "../../Context/MenuContext";
 import Cookis from "cookie-universal";
 import { BASEURL, LOGOUT, USER } from "../../Api/api";
 import axios from "axios";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Button, Dropdown, DropdownButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { WindoeWidth } from "../../Context/WindoeContext";
 const TopBar = () => {
@@ -57,11 +57,13 @@ const TopBar = () => {
        {
         windoeSize.widthSize > 750 ? (<h1> E-commerce </h1>) : (null)
        }
-        <FontAwesomeIcon
-          cursor={"pointer"}
-          icon={faBars}
-          onClick={() => menu.setIsOpen((prev) => !prev)}
-        />
+        <Button variant="light" className="bg-light">
+          <FontAwesomeIcon
+            cursor={"pointer"}
+            icon={faBars}
+            onClick={() => menu.setIsOpen((prev) => !prev)}
+          />
+        </Button>
       </div>
 
       <DropdownButton className="d-flex justify-content-end px-2" id="dropdown-basic-button" title={name}>

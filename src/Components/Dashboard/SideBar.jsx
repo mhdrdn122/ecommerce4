@@ -56,26 +56,7 @@ const SideBar = () => {
             : "block",
       }}
     >
-      {/* <NavLink to="users" className="side-bar-link  d-flex align-items-center">
-        <FontAwesomeIcon icon={faUsers} />
-        <p className='p-0 m-0 pl-3' style={{
-          display : menu.isOpen ? "block" : "none"
-        }}>user</p>
-       </NavLink>
-
-       <NavLink to="add-user" className="side-bar-link  d-flex align-items-center">
-        <FontAwesomeIcon icon={faPlus} />
-        <p className='p-0 m-0 pl-3' style={{
-          display : menu.isOpen ? "block" : "none"
-        }}>Add User</p>
-       </NavLink>
-
-       <NavLink to="writer" className="side-bar-link  d-flex align-items-center">
-        <FontAwesomeIcon icon={faPlus} />
-        <p className='p-0 m-0 pl-3' style={{
-          display : menu.isOpen ? "block" : "none"
-        }}>Writer</p>
-       </NavLink> */}
+      
 
       {user &&
         links.map((link, key) => {
