@@ -36,7 +36,7 @@ const Categorise = () => {
             >
                 
               <SwiperSlide>
-                <a href="index.html" className=" category-item">
+                <a href="#" className=" h-100 category-item">
                   <img
                     src={require("../images/icon-vegetables-broccoli.png")}
                     alt="Category Thumbnail"
@@ -45,7 +45,7 @@ const Categorise = () => {
                 </a>
               </SwiperSlide>
               <SwiperSlide>
-                <a href="index.html" className=" category-item">
+                <a href="#" className=" h-100 category-item">
                   <img
                     src={require("../images/icon-bread-baguette.png")}
                     alt="Category Thumbnail"
@@ -54,7 +54,7 @@ const Categorise = () => {
                 </a>
               </SwiperSlide>
               <SwiperSlide>
-                <a href="index.html" className=" category-item">
+                <a href="#" className=" h-100 category-item">
                   <img
                     src={require("../images/icon-soft-drinks-bottle.png")}
                     alt="Category Thumbnail"
@@ -63,7 +63,7 @@ const Categorise = () => {
                 </a>
               </SwiperSlide>
               <SwiperSlide>
-                <a href="index.html" className=" category-item">
+                <a href="#" className=" h-100 category-item">
                   <img
                     src={require("../images/icon-wine-glass-bottle.png")}
                     alt="Category Thumbnail"
@@ -72,7 +72,7 @@ const Categorise = () => {
                 </a>
               </SwiperSlide>
               <SwiperSlide>
-                <a href="index.html" className=" category-item">
+                <a href="#" className=" h-100 category-item">
                   <img
                     src={require("../images/icon-animal-products-drumsticks.png")}
                     alt="Category Thumbnail"
@@ -81,7 +81,7 @@ const Categorise = () => {
                 </a>
               </SwiperSlide>
               <SwiperSlide>
-                <a href="index.html" className=" category-item">
+                <a href="#" className=" h-100 category-item">
                   <img
                     src={require("../images/icon-bread-herb-flour.png")}
                     alt="Category Thumbnail"
@@ -89,7 +89,6 @@ const Categorise = () => {
                   <h3 className="category-title">Herbs & Flour</h3>
                 </a>
               </SwiperSlide>
-              {/* أضف المزيد من السلايدات بنفس الطريقة */}
             </Swiper>
           </div>
         </div>

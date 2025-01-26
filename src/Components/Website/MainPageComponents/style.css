@@ -42,3 +42,8 @@
     overflow: hidden;
     box-shadow: 0 0 2px #2b7a766c;
 }
+
+
+.swiper-slide > a {
+    min-height: 270px !important
+}
