@@ -3,7 +3,7 @@ import './bars.css'
 
 const Page403 = () => {
   return (
-    <div>
+    <div className='html'>
       <div class="maincontainer">
   <div class="bat">
     <img class="wing leftwing" 
