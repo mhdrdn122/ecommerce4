@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./style-bar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPlus, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from "react-router-dom";
 import { Menu } from "../../Context/MenuContext";
 import { WindoeWidth } from "../../Context/WindoeContext";
@@ -11,6 +10,8 @@ import { BASEURL, USER } from "../../Api/api";
 import axios from "axios";
 
 const SideBar = () => {
+  const menu = useContext(Menu);
+  const windoeSize = useContext(WindoeWidth);
   const cookis = Cookis();
   const token = cookis.get("ecommerce");
   const [user, setUser] = useState();
@@ -24,7 +25,7 @@ const SideBar = () => {
       });
       setUser(res.data);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -32,58 +33,39 @@ const SideBar = () => {
     getUser();
   }, []);
 
-  const menu = useContext(Menu);
-  const windoeSize = useContext(WindoeWidth);
-  console.log(windoeSize);
-  console.log(menu.isOpen);
-
   return (
     <div
       className="side-bar pt-3"
       style={{
         left: windoeSize.widthSize < 768 ? (menu.isOpen ? "0" : "-500px") : "0",
-        width:
-          windoeSize.widthSize < 768
-            ? menu.isOpen
-              ? "60px"
-              : "fit-content"
-            : "240px",
+        width: menu.isOpen ? "240px" : "60px",
         display:
           windoeSize.widthSize < 1560
             ? menu.isOpen
-              ? menu.setIsOpen(prev => !prev)
+              ? "block"
               : "none"
             : "block",
       }}
     >
-      
-
       {user &&
         links.map((link, key) => {
           return (
             link.role.includes(user.role) && (
-              <>
-                <NavLink
-                  key={key}
-                  to={`${link.path}`}
-                  className="side-bar-link  d-flex align-items-center"
+              <NavLink
+                key={key}
+                to={`${link.path}`}
+                className="side-bar-link d-flex align-items-center"
+              >
+                <FontAwesomeIcon icon={link.icon} />
+                <p
+                  className="p-0 m-0 pl-3"
+                  style={{
+                    display: windoeSize.widthSize < 768 ? "none" : "block",
+                  }}
                 >
-                  <FontAwesomeIcon icon={link.icon} />
-                  <p
-                    className="p-0 m-0 pl-3"
-                    style={{
-                      display:
-                        windoeSize.widthSize < 768
-                          ? menu.isOpen
-                            ? "none"
-                            : "none"
-                          : "block",
-                    }}
-                  >
-                    {link.title}
-                  </p>
-                </NavLink>
-              </>
+                  {link.title}
+                </p>
+              </NavLink>
             )
           );
         })}
