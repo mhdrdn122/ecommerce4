@@ -38,7 +38,7 @@ const SideBar = () => {
       className="side-bar pt-3"
       style={{
         left: windoeSize.widthSize < 768 ? (menu.isOpen ? "0" : "-500px") : "0",
-        width: menu.isOpen ? "240px" : "60px",
+        width: menu.isOpen ? "fit-content" : "60px",
         display:
           windoeSize.widthSize < 1560
             ? menu.isOpen
