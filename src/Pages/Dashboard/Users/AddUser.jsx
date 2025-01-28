@@ -40,7 +40,7 @@ const AddUser = () => {
 
   return (
     <Form className='w-100 h-100 p-3 bg-white' onSubmit={addUser}>
-      <h1>Edit User</h1>
+      <h1> Add User</h1>
 
     
 

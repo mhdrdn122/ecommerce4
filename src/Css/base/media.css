@@ -8,6 +8,7 @@
     .container{
         width: 720px;
     }
+
 }
 
 /* 992px */
@@ -36,6 +37,7 @@
     .error{
         width: 100% !important;
     }
+    
    
 }
 

@@ -56,7 +56,7 @@ const TopBar = () => {
   return (
     <h3 className="top-bar d-flex align-items-center justify-content-between">
       <div
-        style={{ width: "30%" }}
+        style={{ width: "35%" }}
         className="d-flex justify-content-between align-items-center"
       >
         {windoeSize.widthSize > 750 ? <h1>E-commerce</h1> : null}

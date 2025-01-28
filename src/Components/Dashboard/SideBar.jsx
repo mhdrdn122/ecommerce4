@@ -54,11 +54,14 @@ const SideBar = () => {
               <NavLink
                 key={key}
                 to={`${link.path}`}
+                style={{
+                  width: windoeSize.widthSize > 768 ? "220px" : "fit-content",
+                }}
                 className="side-bar-link d-flex align-items-center"
               >
                 <FontAwesomeIcon icon={link.icon} />
                 <p
-                  className="p-0 m-0 pl-3"
+                  className="p-0 m-0 pl-3 "
                   style={{
                     display: windoeSize.widthSize < 768 ? "none" : "block",
                   }}

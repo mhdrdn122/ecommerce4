@@ -1,5 +1,4 @@
-import { faCartPlus, faPlus, faUsers } from "@fortawesome/free-solid-svg-icons";
-
+import { faCartPlus, faPlus, faUsers , faUserPlus , faCopyright , faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 export  const links = [
     {
         path:"users",
@@ -10,14 +9,14 @@ export  const links = [
     {
         path:"add-user",
         title : "Add User",
-        icon : faPlus,
+        icon : faUserPlus,
         role:['1995']
 
     },
     {
         path:"categories",
         title : "Categories",
-        icon : faCartPlus,
+        icon : faCopyright,
         role:['1995','1999']
 
     },{
@@ -36,7 +35,7 @@ export  const links = [
     },{
         path:"add-product",
         title : "Add Product",
-        icon : faPlus,
+        icon : faSquarePlus,
         role:['1995','1999']
 
     },
