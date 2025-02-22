@@ -89,7 +89,7 @@ const TableShow = ({
                   key={i}
                   className="img-fluid"
                   width={50}
-                  src={img.image}
+                  src={"https://backend-ecomerce4-production.up.railway.app" + img.image}
                   alt="img-product"
                 />
               ))}
