@@ -99,8 +99,11 @@ const TableShow = ({
               className="img-fluid img-thumbnail"
               alt="img-category"
               style={{ width: "100px" }}
-              src={item1[item2.key]}
+            
+            src={`https://backend-ecomerce4-production.up.railway.app${item1[item2.key]}`}
             />
+
+
           ) : (
             item1[item2.key]
           )}
