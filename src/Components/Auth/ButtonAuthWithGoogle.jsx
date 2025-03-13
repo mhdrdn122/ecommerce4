@@ -8,7 +8,7 @@ const ButtonAuthWithGoogle = () => {
   return (
     <>
     {
-       windoeSize.widthSize > 500 ? ( 
+       windoeSize.widthSize < 748 ? ( 
        
        <button type="button" style={{width: "20px" , height:"50px" , backgroundPosition: ""}} class="login-with-google-btn " ></button>) : (
         

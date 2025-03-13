@@ -89,7 +89,9 @@ const TableShow = ({
                   key={i}
                   className="img-fluid"
                   width={50}
+                  // src={"https://backend-ecomerce4-production.up.railway.app" + img.image}
                   src={"https://backend-ecomerce4-production.up.railway.app" + img.image}
+
                   alt="img-product"
                 />
               ))}
@@ -100,7 +102,9 @@ const TableShow = ({
               alt="img-category"
               style={{ width: "100px" }}
             
+            // src={`https://backend-ecomerce4-production.up.railway.app${item1[item2.key]}`}
             src={`https://backend-ecomerce4-production.up.railway.app${item1[item2.key]}`}
+
             />
 
 

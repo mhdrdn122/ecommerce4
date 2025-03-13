@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './style.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CART, PRO2 } from '../../../Api/api';
 import { Axios } from '../../../Api/Axios';
 import Cookis from "cookie-universal";
@@ -10,6 +10,8 @@ import { faShoppingCart, faStar } from '@fortawesome/free-solid-svg-icons';
 import { updateCart } from '../../../Context/CartContext';
 import CounterInput from '../../../Components/Website/MainPageComponents/CounterInput';
 import SkeltonShow from '../../../Components/Skelton/SkeltonShow';
+import TopBar from '../../../Components/Dashboard/TopBar';
+import { Button } from 'react-bootstrap';
 
 const ProductInfo = () => {
   const [imgId, setImgId] = useState(1);
@@ -128,14 +130,19 @@ const ProductInfo = () => {
   }
 
   return (
-    <div className="card-wrapper container my-2">
+    
+
+    <>
+    
+      <div className="card-wrapper container my-2">
+    
       <div style={{ flexDirection: "row" }} className="card d-flex align-items-start row">
         {/* Left Side */}
         <div className="product-imgs col-md-6">
           <div className="img-display">
             <div className="img-showcase">
               {images.map((img, key) => (
-                <img key={key} src={img.image || ""} alt={`Product ${key + 1}`} />
+                <img key={key} src={ "https://backend-ecomerce4-production.up.railway.app" + img.image || ""} alt={`Product ${key + 1}`} />
               ))}
             </div>
           </div>
@@ -143,7 +150,7 @@ const ProductInfo = () => {
             {images.map((img, key) => (
               <div className="img-item me-2" key={key}>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleImageClick(key); }}>
-                  <img src={img.image} alt={`Thumbnail ${key + 1}`} />
+                  <img src={ "https://backend-ecomerce4-production.up.railway.app" + img.image} alt={`Thumbnail ${key + 1}`} />
                 </a>
               </div>
             ))}
@@ -151,6 +158,7 @@ const ProductInfo = () => {
         </div>
         {/* Right Side */}
         <div className="product-content col-md-6">
+        
           <h2 className="product-title">{productData.title}</h2>
            
           <div className='py-2'>
@@ -167,7 +175,7 @@ const ProductInfo = () => {
 
           <div className="product-price mt-3">
             <p className="last-price">Old Price: <span>${productData.price}</span></p>
-            <p className="new-price">New Price: <span>${productData.discount}</span></p>
+            <p className="new-price">New Price: <span>${ productData.price - productData.discount}</span></p>
             <p className="new-price">Description: <span>{productData.description}</span></p>
           </div>
 
@@ -177,9 +185,17 @@ const ProductInfo = () => {
               Add to Cart <FontAwesomeIcon icon={faShoppingCart} />
             </button>
           </div>
+
         </div>
+
+        <Link className="d-flex justify-content-end mb-2" to={'/'}>
+          <Button > to Home Page </Button>
+        </Link>
       </div>
+
+     
     </div>
+    </>
   );
 };
 

@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Menu } from '../../../Context/MenuContext';
+import { WindoeWidth } from '../../../Context/WindoeContext';
 
 const Categorise = () => {
+
+  const menu = useContext(Menu);
+  const windoeSize = useContext(WindoeWidth);
+  let countCoursel = 2
+  if(windoeSize.widthSize > 750){
+    countCoursel= 4
+  }
+  else if(windoeSize.widthSize < 568){
+    countCoursel= 1
+  }
+  else{
+    countCoursel= 2
+  }
   return (
+
     <section className="py-5 overflow-hidden">
       <div className="container-fluid">
         <div className="row">
@@ -23,16 +39,17 @@ const Categorise = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 ">
             <Swiper
               modules={[Navigation]}
               spaceBetween={20} // المسافة بين السلايدات
-              slidesPerView={4} // عدد السلايدات الظاهرة
+              slidesPerView={countCoursel } // عدد السلايدات الظاهرة
               navigation={{
                 nextEl: '.category-carousel-next',
                 prevEl: '.category-carousel-prev',
               }}
               loop={false}
+              className='flex-wrap'
             >
                 
               <SwiperSlide>

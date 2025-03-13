@@ -25,7 +25,7 @@ const Product = ({ product }) => {
           </a> */}
           <figure style={{overflow:"hidden"}}>
             <a href="#" title={product.title}>
-              <img style={{maxWidth:"220px"}} src={ product.images.length > 0 ? product.images[0].image : require("../images/thumb-bananas.png") } className="tab-image" alt={product.title} />
+              <img style={{maxWidth:"220px"}} src={ product.images.length > 0 ? "https://backend-ecomerce4-production.up.railway.app" + product.images[0].image : require("../images/thumb-bananas.png") } className="tab-image" alt={product.title} />
             </a>
           </figure>
           <h3>{product.title.length > 15 ? product.title.slice(0,15) + "..." : product.title}</h3>
@@ -41,7 +41,7 @@ const Product = ({ product }) => {
 
           <span className="price " style={{color: "gray" ,textDecoration : "line-through" , fontSize: "14px"}}>{product.price}$</span>
           
-          <span className="price">{product.discount}$</span>
+          <span className="price">{ product.price - product.discount }$</span>
           <span style={{fontSize : "16px" , color:"gray"}}>{product.description.length > 20 ? product.description.slice(0,20) + "..." : product.description }</span>
 
           <div className="d-flex align-items-center justify-content-between">
