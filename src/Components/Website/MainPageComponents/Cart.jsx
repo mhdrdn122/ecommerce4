@@ -43,14 +43,16 @@ function Cart() {
 
     localStorage.setItem('product',JSON.stringify(getProducts))
     
+
   }
 
+  console.log(productFromLocal)
   const myProducts = productFromLocal.map(prod => {
     return (
         <div className='row border m-1 p-0'>
           <div className='col-12 d-flex gap-3  align-items-center'>
             <div className='col-4'>
-              <img className='w-100 rounded' src={prod.images.length > 0 ? prod.images[0].image : ""} alt={prod.title} />
+              <img className='w-100 rounded' src={prod.images.length > 0 ? "https://backend-ecomerce4-production.up.railway.app" + prod.images[0].image : ""} alt={prod.title} />
             </div>
             <div className='col-6 '>
               <h4 className='m-0 text-black fs-9'>{prod.title.length > 15 ? prod.title.slice(0,15) + "..." : prod.title}</h4>
