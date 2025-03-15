@@ -3,10 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Table, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { PaginatedItems } from "../Pagination/Pagination";
 import { Axios } from "../../Api/Axios";
 import Cookis from "cookie-universal";
 import LoadingTable from "../Loading/LoadingTable";
+import "./TableShow.css";
 
 const TableShow = ({
   header,
@@ -19,22 +22,25 @@ const TableShow = ({
   setPage,
   del,
 }) => {
-  currentUser = currentUser || false;
+  // State management for search, filtered data and loading states
   const [search, setSearch] = useState("");
   const [dataSearch, setDataSearch] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(null);
-  const [reRender, setReRender] = useState(true);
 
-  let dataFiltering = search.length > 0 ? dataSearch : data;
+  // Determine which data set to display based on search input
+  const dataFiltering = search.length > 0 ? dataSearch : data;
 
+  // Get authentication token from cookies
   const cookis = Cookis();
   const token = cookis.get("ecommerce");
 
+  // Map table headers
   const headerTable = header.map((item, index) => (
     <th key={index}>{item.key}</th>
   ));
 
+  // Debounce search input to fetch data with delay
   useEffect(() => {
     const delay = setTimeout(() => {
       if (search.length > 0) getDataWithSearch();
@@ -43,55 +49,54 @@ const TableShow = ({
     return () => clearTimeout(delay);
   }, [search]);
 
+  // Fetch data based on search query
   const getDataWithSearch = async () => {
     try {
       setLoading(true);
-
       const res = await Axios.post(`${keySearch}/search?title=${search}`, {
         headers: { Authorization: "Bearer " + token },
       });
       setDataSearch(res.data);
     } catch (err) {
-      console.log(err);
+      console.error("Search error:", err);
+      toast.error("Failed to load search results.");
     } finally {
       setLoading(false);
     }
   };
 
-  const handelDelete = (id) => {
-    del(id);
+  // Handle delete action with Toastify notifications
+  const handleDelete = async (id) => {
+    try {
+      setLoadingDelete(id);
+      await del(id);
+      toast.success("Item deleted successfully!");
+    } catch (err) {
+      console.error("Delete error:", err);
+      toast.error("Failed to delete item.");
+    } finally {
+      setLoadingDelete(null);
+    }
   };
 
+  // Render table rows with enhanced animations and effects
   const dataTable = dataFiltering.map((item1, index) => (
     <tr key={index}>
       <td>{item1.id}</td>
-
       {header.map((item2, idx) => (
         <td
           className="text-center text-truncate"
           key={idx}
           style={{ maxWidth: "150px" }}
         >
-          {currentUser && item1[item2.key] === currentUser.name ? (
-            item1[item2.key] + " (You)"
-          ) : item1[item2.key] === "1995" ? (
-            "admin"
-          ) : item1[item2.key] === "1992" ? (
-            "Writer"
-          ) : item1[item2.key] === "1999" ? (
-            "product"
-          ) : item1[item2.key] === "2001" ? (
-            "user"
-          ) : item2.key === "images" ? (
-            <div className="d-flex flex-wrap gap-2">
+          {item2.key === "images" ? (
+            <div className="d-flex flex-wrap gap-2 justify-content-center">
               {item1[item2.key].map((img, i) => (
                 <img
                   key={i}
                   className="img-fluid"
                   width={50}
-                  // src={"https://backend-ecomerce4-production.up.railway.app" + img.image}
-                  src={"https://backend-ecomerce4-production.up.railway.app" + img.image}
-
+                  src={`https://backend-ecomerce4-production.up.railway.app${img.image}`}
                   alt="img-product"
                 />
               ))}
@@ -101,13 +106,8 @@ const TableShow = ({
               className="img-fluid img-thumbnail"
               alt="img-category"
               style={{ width: "100px" }}
-            
-            // src={`https://backend-ecomerce4-production.up.railway.app${item1[item2.key]}`}
-            src={`https://backend-ecomerce4-production.up.railway.app${item1[item2.key]}`}
-
+              src={`https://backend-ecomerce4-production.up.railway.app${item1[item2.key]}`}
             />
-
-
           ) : (
             item1[item2.key]
           )}
@@ -115,23 +115,14 @@ const TableShow = ({
       ))}
 
       <td>
-        <div className="d-flex gap-2">
+        <div className="d-flex gap-2 justify-content-center">
           <FontAwesomeIcon
-            cursor={
-              item1.id === currentUser.id
-                ? "no-drop"
-                : loadingDelete === null
-                ? "pointer"
-                : "no-drop"
-            }
-            onClick={() => {
-              handelDelete(item1.id);
-            }}
+            cursor="pointer"
             fontSize="19px"
-            color={item1.id === currentUser.id ? "#f5abab" : "red"}
+            color="red"
             icon={faTrash}
+            onClick={() => handleDelete(item1.id)}
           />
-
           <Link to={`${item1.id}`}>
             <FontAwesomeIcon
               cursor="pointer"
@@ -146,10 +137,11 @@ const TableShow = ({
 
   return (
     <div>
+      <ToastContainer />
       <Form.Group className="mb-3">
         <Form.Control
           name="search"
-          placeholder="search ..."
+          placeholder="Search ..."
           onChange={(e) => setSearch(e.target.value)}
           value={search}
           id="search"
@@ -158,15 +150,14 @@ const TableShow = ({
       </Form.Group>
 
       <div className="table-responsive">
-        <Table striped bordered hover>
+        <Table striped bordered hover className="custom-table">
           <thead>
             <tr>
-              <th>id</th>
+              <th>ID</th>
               {headerTable}
               <th>Action</th>
             </tr>
           </thead>
-
           <tbody>
             {!loading && data.length === 0 ? (
               <tr>
@@ -185,30 +176,6 @@ const TableShow = ({
             )}
           </tbody>
         </Table>
-      </div>
-
-      <div className="w-100 d-flex justify-content-center align-items-center gap-5">
-        <span>
-          total items: {search.length > 0 ? dataFiltering.length : total}
-        </span>
-        <PaginatedItems
-          setPage={setPage}
-          limit={limit}
-          total={search.length > 0 ? dataFiltering.length : total}
-        />
-        <Form.Select
-          style={{ width: "100px" }}
-          name="countPages"
-          onChange={(e) => setLimit(e.target.value)}
-          id="countPages"
-          required
-        >
-          <option value="">select</option>
-          <option value="3">3</option>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-        </Form.Select>
       </div>
     </div>
   );

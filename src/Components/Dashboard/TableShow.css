@@ -1,0 +1,105 @@
+/* تحسين تصميم الجدول بألوان حديثة وجذابة */
+.custom-table {
+    background-color: var(--light-grey-color);
+    color: var(--dark-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  /* تصميم الرأس بألوان متناسقة */
+  .custom-table thead {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 14px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid var(--grey-color);
+  }
+  
+  /* تحسين تصميم الصفوف */
+  .custom-table tbody tr {
+    transition: background-color 0.2s ease;
+  }
+  
+  /* لون مميز عند التحويم على الصف */
+  .custom-table tbody tr:hover {
+    background-color: var(--light-primary-color);
+    color: var(--dark-color);
+  }
+  
+  /* تصميم الصور داخل الجدول */
+  .custom-table img {
+    border-radius: 5px;
+    width: 60px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* تصميم الأيقونات */
+  .custom-table .fa-trash,
+  .custom-table .fa-pen-to-square {
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .custom-table .fa-trash:hover {
+    color: #ff4d4d;
+  }
+  
+  .custom-table .fa-pen-to-square:hover {
+    color: var(--accent-color);
+  }
+  
+  /* تصميم حقل البحث */
+  .custom-table input[type="search"] {
+    border: 1px solid var(--grey-color);
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .custom-table input[type="search"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+  
+  /* تصميم القائمة المنسدلة */
+  .custom-table select {
+    border-radius: 8px;
+    padding: 6px;
+    margin: 5px;
+    border: 1px solid var(--grey-color);
+  }
+  
+  /* تحسين عرض الجدول على الشاشات الصغيرة */
+  @media (max-width: 768px) {
+    .custom-table th,
+    .custom-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  
+    .custom-table .fa-trash,
+    .custom-table .fa-pen-to-square {
+      font-size: 16px;
+    }
+  
+    .custom-table img {
+      width: 40px;
+      height: auto;
+    }
+  
+    /* جعل الجدول أكثر مرونة */
+    .table-responsive {
+      overflow-x: auto;
+    }
+  }
+  

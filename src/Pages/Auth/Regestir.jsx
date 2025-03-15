@@ -86,7 +86,7 @@ const Regestir = () => {
                                 padding : " 12px 16px 12px 16px "
                             }} type='submit'>Register Now</button>
                             
-                            <a href={`https://ecommerce4-phi.vercel.app/login-google`}> <ButtonAuthWithGoogle /> </a>
+                            <a href={`https://backend-ecomerce4-production.up.railway.app/login-google`}> <ButtonAuthWithGoogle /> </a>
                             
                         </div>
                         

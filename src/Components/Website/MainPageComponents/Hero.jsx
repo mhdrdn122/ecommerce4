@@ -2,7 +2,7 @@ import React from 'react'
 import product1 from '../images/product-thumb-1.png'
 const Hero = () => {
   return (
-    <section class="py-3" style={{background:`url(${require("../images/background-pattern.jpg")}) no-repeat`,backgroundRepeat: "no-repeat",backgroundSize: "cover"}}>
+    <section id='hero' class="py-3" style={{background:`url(${require("../images/background-pattern.jpg")}) no-repeat`,backgroundRepeat: "no-repeat",backgroundSize: "cover"}}>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">

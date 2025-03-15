@@ -21,7 +21,7 @@ const LatestProducts = () => {
     } , [])
 
   return (
-    <section className="py-5">
+    <section id='LSP' className="py-5">
     <div className="container-fluid">
       <div className="bootstrap-tabs product-tabs">
         <div className="tabs-header d-flex justify-content-between border-bottom my-5">

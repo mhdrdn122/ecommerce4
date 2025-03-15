@@ -20,7 +20,7 @@ const Categories = () => {
     const [ limit , setLimit ] = useState(5)
    
 
-
+ 
 
     const getCategories = async () => {
         const categories =  await Axios.get(`/${CAT}?limit=${limit}&page=${page}`, {headers : {
@@ -36,6 +36,7 @@ const Categories = () => {
     } , [limit,page])
 
 
+    
 
    
 
@@ -44,9 +45,9 @@ const Categories = () => {
         const res = await Axios.delete(`${CAT2}/${id}`, {headers : {
           Authorization :  "Bearer " + token
       }})
-        // setCategories( prov => prov.filter(item => item.id != id))
-        // setReRenderComponent( prev => !prev)
-    setReRender(prov => !prov)
+        setCategories( prov => prov.filter(item => item.id != id))
+        setReRenderComponent( prev => !prev)
+    // setReRender(prov => !prov)
 
         
       }catch(err){
@@ -68,7 +69,7 @@ const Categories = () => {
     ]
   return (
     
-    <div className='w-100 bg-white p-2'>
+    <div className='w-100 h-100 bg-white p-2'>
       <div className='d-flex justify-content-between m-1 align-items-center'>
       <h3>Category Page</h3>
       <Link to="/dashboard/add-category">

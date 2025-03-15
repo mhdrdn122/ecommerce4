@@ -56,7 +56,7 @@ const Users = () => {
     } , [page , limit])
 
 
-
+ 
    
 
     const deleteUser = async (id) => {
@@ -92,7 +92,7 @@ const Users = () => {
     ]
   return (
     
-    <div className='w-100 bg-white p-2'>
+    <div className='w-100 h-100 bg-white p-2'>
       <div className='d-flex justify-content-between m-1 align-items-center'>
       <h3>Users Page</h3>
       <Link to="/dashboard/add-user">

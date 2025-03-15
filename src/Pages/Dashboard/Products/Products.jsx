@@ -39,6 +39,7 @@ const Products = () => {
         const res = await Axios.delete(`${PRO2}/${id}`, {headers : {
           Authorization :  "Bearer " + token
       }})
+      setProducts( prov => prov.filter(item => item.id != id))
         setReRenderComponent( prev => !prev)
       }catch(err){
         console.log(err)
@@ -80,7 +81,7 @@ const Products = () => {
     ]
   return (
     
-    <div className='w-100 bg-white p-2'>
+    <div className='w-100 h-100 bg-white p-2'>
       <div className='d-flex justify-content-between m-1 align-items-center'>
       <h3>Products Page</h3>
       <Link to="/dashboard/add-product">

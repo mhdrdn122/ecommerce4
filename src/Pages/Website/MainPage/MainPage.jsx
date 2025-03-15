@@ -8,6 +8,7 @@ import Categorise from '../../../Components/Website/MainPageComponents/Categoris
 import ProductsTending from '../../../Components/Website/MainPageComponents/ProductsTending'
 import LatestProducts from '../../../Components/Website/MainPageComponents/LatestProducts'
 import TopRate from '../../../Components/Website/MainPageComponents/TopRate'
+import Footer from '../../../Components/Website/MainPageComponents/Footer'
 
 
 const MainPage = () => {
@@ -18,6 +19,7 @@ const MainPage = () => {
         <ProductsTending />
         <LatestProducts />
         <TopRate />
+        <Footer />
         
       </div>
   )

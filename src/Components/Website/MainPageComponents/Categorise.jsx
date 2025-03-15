@@ -22,7 +22,7 @@ const Categorise = () => {
   }
   return (
 
-    <section className="py-5 overflow-hidden">
+    <section id='category' className="py-5 overflow-hidden">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

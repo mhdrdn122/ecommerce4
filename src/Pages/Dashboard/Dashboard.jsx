@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div className='dashboard'>
         <TopBar />
-        <div className='d-flex ' style={{paddingTop:"70px"}}>
+        <div className='d-flex' style={{paddingTop:"70px"}}>
         {/* widthS */}
         <SideBar />
         <div style={{
