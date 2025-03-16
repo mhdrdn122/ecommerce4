@@ -3,6 +3,8 @@ export const BASEURL = "https://backend-ecomerce4-production.up.railway.app/api"
 export const REGISTER = "register"
 export const LOGIN = "login"
 export const LOGOUT = "logout"
+export const GOOGLE_AUTH = "auth/google/callback"
+
 
 export const CAT = "categories"
 export const CAT2 = "category"

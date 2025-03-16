@@ -20,6 +20,7 @@ import MainPage from './Pages/Website/MainPage/MainPage';
 import WebCategories from './Pages/Website/MainPage/WebCategories';
 import AllCategories from './Pages/Website/Categories/AllCategories';
 import ProductInfo from './Pages/Website/Product/ProductInfo';
+import GoogleCallBack from './Pages/Auth/GoogleCallBack';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
         <Route element={<ReqouerBack />}>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Regestir />} />
+          {/* <Route path='/auth/google/callback' element={<GoogleCallBack />} /> */}
+
         </Route>
         
         {/* page 404  */}

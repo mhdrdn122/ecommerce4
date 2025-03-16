@@ -85,7 +85,7 @@ const Login = () => {
                                 padding : " 12px 16px 12px 16px "
                             }} type='submit'>Login Now</button>
                             
-                            <a href={`https://backend-ecomerce4-production.up.railway.app/login-google`}> <ButtonAuthWithGoogle /> </a>
+                            {/* <a href={`https://backend-ecomerce4-production.up.railway.app/login-google`}> <ButtonAuthWithGoogle /> </a> */}
                             
                         </div>
                         { error && (
