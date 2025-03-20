@@ -17,7 +17,7 @@ const Categories = () => {
     const token = cookis.get('ecommerce')
 
     const [ page , setPage ] = useState(1)
-    const [ limit , setLimit ] = useState(5)
+    const [ limit , setLimit ] = useState(6)
    
 
  

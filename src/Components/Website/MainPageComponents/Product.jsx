@@ -2,7 +2,6 @@ import { faStar as starisEmpty } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
-import { BASEURLMINE } from "../../../Api/api";
 
 const Product = ({ product }) => {
     const roundStars =  Math.round(product.rating)
@@ -26,7 +25,7 @@ const Product = ({ product }) => {
           </a> */}
           <figure style={{overflow:"hidden"}}>
             <a href="#" title={product.title}>
-              <img style={{maxWidth:"220px"}} src={ product.images.length > 0 ? `${BASEURLMINE}` + product.images[0].image : require("../images/thumb-bananas.png") } className="tab-image" alt={product.title} />
+              <img style={{maxWidth:"220px"}} src={ product.images.length > 0 ? "https://backend-ecomerce4-production.up.railway.app" + product.images[0].image : require("../images/thumb-bananas.png") } className="tab-image" alt={product.title} />
             </a>
           </figure>
           <h3>{product.title.length > 15 ? product.title.slice(0,15) + "..." : product.title}</h3>

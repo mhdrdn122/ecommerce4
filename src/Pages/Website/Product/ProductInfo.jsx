@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './style.css';
 import { Link, useParams } from 'react-router-dom';
-import { BASEURLMINE, CART, PRO2 } from '../../../Api/api';
+import { CART, PRO2 } from '../../../Api/api';
 import { Axios } from '../../../Api/Axios';
 import Cookis from "cookie-universal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -142,7 +142,7 @@ const ProductInfo = () => {
           <div className="img-display">
             <div className="img-showcase">
               {images.map((img, key) => (
-                <img key={key} src={ `${BASEURLMINE}` + img.image || ""} alt={`Product ${key + 1}`} />
+                <img key={key} src={ "https://backend-ecomerce4-production.up.railway.app" + img.image || ""} alt={`Product ${key + 1}`} />
               ))}
             </div>
           </div>
@@ -150,7 +150,7 @@ const ProductInfo = () => {
             {images.map((img, key) => (
               <div className="img-item me-2" key={key}>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleImageClick(key); }}>
-                  <img src={ `${BASEURLMINE}` + img.image} alt={`Thumbnail ${key + 1}`} />
+                  <img src={ "https://backend-ecomerce4-production.up.railway.app" + img.image} alt={`Thumbnail ${key + 1}`} />
                 </a>
               </div>
             ))}

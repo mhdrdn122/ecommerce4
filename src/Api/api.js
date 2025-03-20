@@ -1,6 +1,4 @@
 // export const BASEURL = "http://127.0.0.1:8000/api"
-export const BASEURLMINE = "https://backend-ecomerce4-production.up.railway.app"
-
 
 export const BASEURL = "https://backend-ecomerce4-production.up.railway.app/api"
 export const REGISTER = "register"
