@@ -66,8 +66,8 @@ const AddUser = () => {
                  onChange={ (e) => setRole(e.target.value)}   required  >
                   <option disable value=''>select role</option>
                   <option  value='1995'>admin</option>
-                  <option disable value='1992'>writer</option>
-                  <option disable value='1999'>Product</option>
+                  {/* <option disable value='1992'>writer</option>
+                  <option disable value='1999'>Product</option> */}
                   <option disable value='2001'>User</option>
 
                  </Form.Select>

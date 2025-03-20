@@ -24,7 +24,7 @@ const Page404 = () => {
         <a href="/" class="link_404">Go to Home</a>
       </div>
         </div>
-        </div>
+        </div> 
         </div>
       </div>
 </section>

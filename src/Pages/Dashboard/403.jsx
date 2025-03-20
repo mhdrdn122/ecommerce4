@@ -1,41 +1,36 @@
 import React from 'react'
 import './bars.css'
 
-const Page403 = () => {
+const Page404 = () => {
   return (
-    <div className='html'>
-      <div class="maincontainer">
-  <div class="bat">
-    <img class="wing leftwing" 
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-wing.png" />
-    <img class="body"
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-body.png" alt="bat" />
-    <img class="wing rightwing"
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-wing.png" />
-  </div>
-  <div class="bat">
-    <img class="wing leftwing" 
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-wing.png" />
-    <img class="body"
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-body.png" alt="bat" />
-    <img class="wing rightwing"
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-wing.png" />
-  </div>
-  <div class="bat">
-    <img class="wing leftwing" 
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-wing.png" />
-    <img class="body"
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-body.png" alt="bat" />
-    <img class="wing rightwing"
-         src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/bat-wing.png" />
-  </div>
-  <img class="foregroundimg" src="https://aimieclouse.com/Media/Portfolio/Error403Forbidden/HauntedHouseForeground.png" alt="haunted house" />
-  
-</div>
-<h1 class="errorcode">ERROR 403</h1>
-<div class="errortext">This area is forbidden. Turn back now!</div>
-    </div>
+    <section class="page_404">
+      <div class="container">
+        <div class="row">	
+        <div class="col-sm-12 ">
+        <div class="col-sm-10 col-sm-offset-1  text-center">
+        <div class="four_zero_four_bg">
+          <h1 class="text-center ">ERROR 403</h1>
+        
+        
+        </div>
+        
+        <div class="contant_box_404">
+        <h3 class="h2">
+        Look like you're lost
+        </h3>
+        
+        <p>This area is forbidden. Turn back now!</p>
+        
+        <a href="/" class="link_404">Go to Home</a>
+      </div>
+        </div>
+        </div> 
+        </div>
+      </div>
+</section>
   )
 }
 
-export default Page403
+export default Page404
+
+

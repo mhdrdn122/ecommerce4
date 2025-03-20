@@ -31,9 +31,15 @@ const Regestir = () => {
         try{
            const res = await axios.post(`${BASEURL}/${REGISTER}`,form)
            const token = res.data.token
-           cookis.set("ecommerce", token)
+    
 
-           navigate('/dashboard')
+           cookis.set("ecommerce", token)
+           const role = res.data.user.role
+           const go = role ==='1995' ? 'users' : ""
+
+           role === '2001' ? navigate(`/dashboard/users`) : navigate(`/`)  
+           
+
         }
         catch(err){
             console.log(err)
