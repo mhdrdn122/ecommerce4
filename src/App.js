@@ -48,7 +48,7 @@ function App() {
         <Route path='/*' element={<Page404 />} />
 
         {/* ******* Proticted Routs ******* */}
-        <Route element={<ReqouerAuth allowedRole={['1992','1995','1999']}/>} >
+        <Route element={<ReqouerAuth allowedRole={['1992','1995','2001']}/>} >
         <Route path='product/:id' element={<ProductInfo />} />
 
           <Route path='/dashboard' element={<Dashboard />}  >
@@ -59,13 +59,13 @@ function App() {
               <Route path='add-user'  element={<AddUser />}/>
             </Route>
 
-            <Route element={<ReqouerAuth allowedRole={['1999','1995']}/>}>
+            <Route element={<ReqouerAuth allowedRole={['1992','1995']}/>}>
               <Route path='categories'  element={<Categories />}/>
               <Route path='add-category'  element={<AddCategories/>}/>
               <Route path='categories/:id'  element={<EditCategory />}/>
             </Route>
 
-            <Route element={<ReqouerAuth allowedRole={['1999','1995']}/>}>
+            <Route element={<ReqouerAuth allowedRole={['1992','1995']}/>}>
               <Route path='products'  element={<Products />}/>
               <Route path='add-product'  element={<AddProduct/>}/>
               <Route path='products/:id'  element={<EditProduct />}/>
