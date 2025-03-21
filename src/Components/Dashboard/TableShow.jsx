@@ -64,7 +64,7 @@ const TableShow = ({
 
   const dataTable = dataFiltering.map((item1, index) => (
     <tr key={index}>
-      <td>{item1.id}</td>
+      <td>{index + 1}</td>
 
       {header.map((item2, idx) => (
         <td
