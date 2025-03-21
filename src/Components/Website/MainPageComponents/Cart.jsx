@@ -59,7 +59,7 @@ function Cart() {
               <p className='m-0'>{prod.About.length > 20 ? prod.About.slice(0,20) + "..." : prod.About}</p>
               <div className='m-0 d-flex d-flex gap-3 align-items-center '> 
                 <p className='m-0 text-decoration-line-through  fw-bold'>{prod.price}</p>
-                <p className='m-0'>{prod.discount}</p>
+                <p className='m-0'>{prod.price - prod.discount}</p>
               </div>
               <div className='' style={{margin: "10px 0"}}>
               <CounterInput count={prod.count} id={prod.id} changeCount={changeCount}  setCount={setCount} />
